@@ -50,7 +50,7 @@ class MyViewController : UIViewController {
         
     }
 }
-let mvc = MyViewController()
-          mvc.preferredContentSize = CGSize(width: 768, height: 1024)
-          PlaygroundPage.current.liveView = mvc
+let mvc = MyViewController(screenType: .ipad, isPortrait: false)
+          //mvc.preferredContentSize = CGSize(width: 768, height: 1024)
+PlaygroundPage.current.liveView = mvc.scale(to: 0.4)
 //: [Next](@next)
