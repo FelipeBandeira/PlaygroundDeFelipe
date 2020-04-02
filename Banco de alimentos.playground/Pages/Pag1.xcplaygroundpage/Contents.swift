@@ -5,6 +5,26 @@ import Foundation
 import UIKit
 import PlaygroundSupport
 
+
+
+
+var cfURL = Bundle.main.url(forResource: "PTSans-Bold", withExtension: "ttf")! as CFURL
+  CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
+
+cfURL = Bundle.main.url(forResource: "PTSans-BoldItalic", withExtension: "ttf")! as CFURL
+CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
+
+cfURL = Bundle.main.url(forResource: "PTSans-Italic", withExtension: "ttf")! as CFURL
+CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
+
+cfURL = Bundle.main.url(forResource: "PTSans-Regular", withExtension: "ttf")! as CFURL
+CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
+
+
+for name in UIFont.familyNames {
+   print(name)
+}
+
 class MyViewController : UIViewController {
     
     let button = UIButton()
@@ -16,30 +36,28 @@ class MyViewController : UIViewController {
         
         let appName = UILabel()
         appName.frame = CGRect(x: 42, y: 42, width: 361, height: 68)
-        appName.text = "Banco de Alimentos"
+        appName.text = "Banco alimentar"
         appName.textColor = .black
+        let fonteDoAppName = UIFont (name: "PT Sans", size: 50)
+        appName.font = fonteDoAppName
         
         let mainQuestion = UILabel()
         mainQuestion.frame = CGRect(x: 403, y: 252, width: 559, height: 95)
         mainQuestion.text = "O que você busca?"
         mainQuestion.textColor = .black
+        let fonteDaQuestion = UIFont(name: "PT Sans", size: 70)
+        mainQuestion.font = fonteDaQuestion
+        
         
         let imagemDePratoFeito = UIImage(named: "Macarronada.jpg")
         let botaoDePratoFeito = UIButton()
         botaoDePratoFeito.frame = CGRect(x: 136, y: 441, width: 473, height: 426)
-       // botaoDePratoFeito.setTitle("Prato feito", for: .normal)
-        //botaoDePratoFeito.setTitleColor(.black, for: .normal)
         botaoDePratoFeito.setImage(imagemDePratoFeito, for: .normal)
-        //botaoDePratoFeito.imageRect(forContentRect: CGRect(x: 722, y: 377, width: 354, height: 324))
         
         let imagemDeIngredientes = UIImage(named: "Ingredientes.jpg")
         let botaoDeIngredientes = UIButton()
         botaoDeIngredientes.frame = CGRect(x: 767, y: 441, width: 473, height: 426)
-        //botaoDeIngredientes.setTitle("Ingredientes", for: .normal)
-        //botaoDeIngredientes.setTitleColor(.black, for: .normal)
         botaoDeIngredientes.setImage(imagemDeIngredientes, for: .normal)
-        //botaoDeIngredientes.imageRect(forContentRect: CGRect(x: 142, y: 377, width: 352, height: 324))
-        
         
         
         view.addSubview(appName)
