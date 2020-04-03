@@ -58,6 +58,7 @@ class MyViewController : UIViewController {
         let botaoDePratoFeito = UIButton()
         botaoDePratoFeito.frame = CGRect(x: 136, y: 441, width: 473, height: 426)
         botaoDePratoFeito.setImage(imagemDePratoFeito, for: .normal)
+        botaoDePratoFeito.imageView?.layer.cornerRadius = 10
         let labelDoBotaoDePratoFeito = UILabel()
         labelDoBotaoDePratoFeito.frame = CGRect(x: 244, y: 876, width: 243, height: 55)
         labelDoBotaoDePratoFeito.text = "Prato feito"
@@ -69,6 +70,7 @@ class MyViewController : UIViewController {
         let botaoDeIngredientes = UIButton()
         botaoDeIngredientes.frame = CGRect(x: 767, y: 441, width: 473, height: 426)
         botaoDeIngredientes.setImage(imagemDeIngredientes, for: .normal)
+        botaoDeIngredientes.imageView?.layer.cornerRadius = 10
         let labelDeIngredientes = UILabel()
         labelDeIngredientes.frame = CGRect(x: 883, y: 876, width: 242, height: 64)
         labelDeIngredientes.text = "Ingredientes"
