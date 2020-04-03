@@ -37,7 +37,7 @@ class MyViewController2 : UIViewController {
         anuncioDeDisponibilidade.frame = CGRect(x: 42, y: 197, width: 582, height: 100)
         anuncioDeDisponibilidade.text = "Hoje perto de você"
         anuncioDeDisponibilidade.textColor = .black
-        let fonteDoAnuncio = UIFont (name: "PT Sans", size: 70)
+        let fonteDoAnuncio = UIFont (name: "PTSans-Bold", size: 70)
         anuncioDeDisponibilidade.font = fonteDoAnuncio
         
         let descricaoDoAnuncio = UILabel()
@@ -51,25 +51,43 @@ class MyViewController2 : UIViewController {
         mainQuestion.frame = CGRect(x: 280, y: 455, width: 805, height: 53)
         mainQuestion.text = "Escolha uma das categorias para ver mais"
         mainQuestion.textColor = .black
-        let fonteDaQuestion2 = UIFont (name: "PT Sans", size: 45)
+        let fonteDaQuestion2 = UIFont (name: "PTSans-Bold", size: 45)
         mainQuestion.font = fonteDaQuestion2
+        
         
         let imagemDeFrutas = UIImage(named: "Frutas.jpg")
         let botaoDeFrutas = UIButton()
         botaoDeFrutas.frame = CGRect(x: 512, y: 552, width: 341, height: 273)
         botaoDeFrutas.setImage(imagemDeFrutas, for: .normal)
+        let labelDeFrutas = UILabel()
+        labelDeFrutas.frame = CGRect(x: 624, y: 844, width: 117, height: 37)
+        labelDeFrutas.text = "Frutas"
+        labelDeFrutas.textColor = .black
+        let fonteDeFrutas = UIFont(name: "PTSans-Bold", size: 40)
+        labelDeFrutas.font = fonteDeFrutas
         
         
         let imagemDeLegumes = UIImage(named: "Legumes.jpg")
         let botaoDeLegumes = UIButton()
         botaoDeLegumes.frame = CGRect(x: 109, y: 559, width: 342, height: 266)
         botaoDeLegumes.setImage(imagemDeLegumes, for: .normal)
+        let labelDeLegumes = UILabel()
+        labelDeLegumes.frame = CGRect(x: 198, y: 837, width: 154, height: 37)
+        labelDeLegumes.text = "Legumes"
+        labelDeLegumes.textColor = .black
+        let fonteDeLegumes = UIFont(name: "PTSans-Bold", size: 40)
+        labelDeLegumes.font = fonteDeLegumes
         
         
         let imagemDeCarne = UIImage(named: "proteinas.jpg")
         let botaoDeCarnes = UIButton()
-         botaoDeCarnes.frame = CGRect(x: 914, y: 552, width: 342, height: 273)
+        botaoDeCarnes.frame = CGRect(x: 914, y: 552, width: 342, height: 273)
         botaoDeCarnes.setImage(imagemDeCarne, for: .normal)
+        let labelDeCarnes = UILabel()
+        labelDeCarnes.frame = CGRect(x: 1021, y: 844, width: 117, height: 42)
+        labelDeCarnes.text = "Carnes"
+        let fonteDeCarnes = UIFont(name: "PTSans-Bold", size: 40)
+        labelDeCarnes.font = fonteDeCarnes
        
         
         view.addSubview(appName)
@@ -77,8 +95,11 @@ class MyViewController2 : UIViewController {
         view.addSubview(descricaoDoAnuncio)
         view.addSubview(mainQuestion)
         view.addSubview(botaoDeCarnes)
+        view.addSubview(labelDeCarnes)
         view.addSubview(botaoDeFrutas)
+        view.addSubview(labelDeFrutas)
         view.addSubview(botaoDeLegumes)
+        view.addSubview(labelDeLegumes)
         
         self.view = view
         
