@@ -16,6 +16,8 @@ class CelulaDosVegetais: UICollectionViewCell{
         self.backgroundView = ilustracao
         titulo.font = UIFont(name: "PTSans-Bold", size: 40)
         titulo.textColor = .white
+        self.layer.cornerRadius = 10
+        self.layer.masksToBounds = true
         self.addSubview(titulo)
         
     }
@@ -29,21 +31,40 @@ class CelulaDosVegetais: UICollectionViewCell{
 class EstruturaDosVegetais {
     let nomeDoVegetal: String
     let fotoDoVegetal: UIImage?
+    let lugaresDisponiveis: [Lugar]
     
-    init(nome: String, foto: UIImage?){
+    init(nome: String, foto: UIImage?, lugares: [Lugar]){
         nomeDoVegetal = nome
         fotoDoVegetal = foto
+        lugaresDisponiveis = lugares
+    }
+}
+
+class Lugar{
+    let nomeDoEstabelecimento: String
+    let horaDeRetirada: String
+    let distancia: String
+    
+    init(nome: String, hora: String, dist: String){
+        nomeDoEstabelecimento = nome
+        horaDeRetirada = hora
+        distancia = dist
     }
 }
 
 
 class MyViewController4 : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    let exemplosDeLugares = [Lugar(nome: "Quitandaria", hora: "19:00", dist: "a 250m"), Lugar(nome: "Bompreço", hora: "21:00", dist: "a 2.5km"), Lugar(nome: "Mercado de Zé", hora: "15:30", dist: "a 50m")]
     
-    let listaDeVegetais = [EstruturaDosVegetais(nome: "Coentro", foto: UIImage(named: "coentro-5.jpg")), EstruturaDosVegetais(nome: "Beringela", foto: UIImage(named: "sh_beringela_432696973.jpg")), EstruturaDosVegetais(nome: "Cebola Roxa", foto: UIImage(named: "cebola-roxa-768x307-b88dde90.jpg")), EstruturaDosVegetais(nome: "Cenoura", foto: UIImage(named: "beneficios-da-cenoura_14186_l.jpg"))]
-    
+    var listaDeVegetais:[EstruturaDosVegetais] = []
+
     
     override func viewDidLoad() {
+        
+         listaDeVegetais = [EstruturaDosVegetais(nome: "Coentro", foto: UIImage(named: "coentro-5.jpg"), lugares: exemplosDeLugares), EstruturaDosVegetais(nome: "Beringela", foto: UIImage(named: "sh_beringela_432696973.jpg"), lugares: exemplosDeLugares), EstruturaDosVegetais(nome: "Cebola Roxa", foto: UIImage(named: "cebola-roxa-768x307-b88dde90.jpg"), lugares: exemplosDeLugares), EstruturaDosVegetais(nome: "Cenoura", foto: UIImage(named: "beneficios-da-cenoura_14186_l.jpg"), lugares: exemplosDeLugares)]
+        
+        print (listaDeVegetais[2].lugaresDisponiveis[0].nomeDoEstabelecimento)
         
         view.backgroundColor = .white
         
@@ -58,6 +79,7 @@ class MyViewController4 : UIViewController, UICollectionViewDelegate, UICollecti
         minhaCollectionView.register(CelulaDosVegetais.self, forCellWithReuseIdentifier: "id")
         minhaCollectionView.backgroundColor = .green
         minhaCollectionView.dataSource = self
+        minhaCollectionView.delegate = self
         
         view.addSubview(minhaCollectionView)
         
@@ -79,6 +101,47 @@ class MyViewController4 : UIViewController, UICollectionViewDelegate, UICollecti
 }
 
 
+class MyViewController 5: UIViewController{
+    let vegetalEspecífico: EstruturaDosVegetais
+    let imagemDoPopUp = UIImageView
+    let nomeDoPopUp = UILabel
+    let anuncioDoPopUp = UILabel
+    let descricaoDoVegetal = UILabel
+
+    override func loadView(){
+        //Nessa parte, estamos basicamente configurando o esqueleto do pop up, para depois preenchermos com conteúdo
+        let pop_up = UIView()
+        pop_up.frame = CGRect(x: 114.17, y: 205, width: 1147.83, height: 737)
+        pop_up.backgroundColor = #colorLiteral(red: 0.02745098039, green: 0.1176470588, blue: 0.1333333333, alpha: 1)
+        // Onde eu adiciono essa view do pop_up?
+        
+        //essas cores desses nomes estão erradas. O código não tá reconhecendo os roles completamente... Por quê?
+        imagemDoPopUp = UIImageView(frame: CGRect(x: 114, y: 205, width: 537.96, height: 736.54))
+        pop_up.addSubview(imagemDoPopUp)
+        
+        nomeDoPopUp = UILabel(frame: CGRect(x: 131.68, y: 216.93, width: 500, height: 84.3))
+        nomeDoPopUp.font = UIFont(name: "PTSans-Bold", size: 65)
+        // Não tô recebendo a opção de autocomplete do textColor. Por quê?
+        
+        
+        
+        
+        
+        let suavizadorDeFundo = UIView()
+        suavizadorDeFundo.frame = CGRect(x: 114, y: 335.47, width: 537.96, height: 606.08)
+        suavizadorDeFundo.backgroundColor = .black
+        suavizadorDeFundo.alpha = 0.55
+        pop_up.addSubview(suavizadorDeFundo)
+        
+        
+    }
+
+
+
+    
+}
+
+
+let mvc5 = MyViewController5(ScreenType: .ipadPro12_9, isPortrait: false)
 let mvc4 = MyViewController4(screenType: .ipadPro12_9, isPortrait: false)
-//mvc.preferredContentSize = CGSize(width: 768, height: 1024)
 PlaygroundPage.current.liveView = mvc4.scale(to: 0.5)

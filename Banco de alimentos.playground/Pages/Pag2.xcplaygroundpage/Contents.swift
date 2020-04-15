@@ -79,6 +79,7 @@ class MyViewController2 : UIViewController {
         botaoDeLegumes.frame = CGRect(x: 109, y: 559, width: 342, height: 266)
         botaoDeLegumes.setImage(imagemDeLegumes, for: .normal)
         botaoDeLegumes.imageView?.layer.cornerRadius = 10
+        botaoDeLegumes.addTarget(nil, action: #selector(tocarBotao), for: .touchUpInside)
         view.addSubview(botaoDeLegumes)
         let labelDeLegumes = UILabel()
         labelDeLegumes.frame = CGRect(x: 198, y: 837, width: 154, height: 37)
@@ -87,8 +88,6 @@ class MyViewController2 : UIViewController {
         let fonteDeLegumes = UIFont(name: "PTSans-Bold", size: 40)
         labelDeLegumes.font = fonteDeLegumes
         view.addSubview(labelDeLegumes)
-        
-        botaoDeLegumes.addTarget(nil, action: #selector(tocarBotao), for: .touchUpInside)
         
         
         let imagemDeCarne = UIImage(named: "proteinas.jpg")
