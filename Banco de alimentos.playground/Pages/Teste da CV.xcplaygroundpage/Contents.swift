@@ -66,7 +66,7 @@ class MyViewController4 : UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         
-        listaDeVegetais = [EstruturaDosVegetais(nome: "Coentro", foto: UIImage(named: "coentro-5.jpg"), descricao: "a", lugares: exemplosDeLugares), EstruturaDosVegetais(nome: "Beringela", foto: UIImage(named: "sh_beringela_432696973.jpg"), descricao: "b", lugares: exemplosDeLugares), EstruturaDosVegetais(nome: "Cebola Roxa", foto: UIImage(named: "cebola-roxa-768x307-b88dde90.jpg"), descricao: "c", lugares: exemplosDeLugares), EstruturaDosVegetais(nome: "Cenoura", foto: UIImage(named: "beneficios-da-cenoura_14186_l.jpg"), descricao: "d", lugares: exemplosDeLugares)]
+        listaDeVegetais = [EstruturaDosVegetais(nome: "Coentro", foto: UIImage(named: "coentro-5.jpg"), descricao: "O coentro é uma erva aromática e muito utilizada como tempero. Ele proporciona uma série de benefícios à saúde, como redução do risco de doenças cardiovasculares, degenerativas e câncer devido à ação antioxidante. O coentro também contribui para o controle da pressão arterial e é bom para a visão.", lugares: exemplosDeLugares), EstruturaDosVegetais(nome: "Berinjela", foto: UIImage(named: "sh_beringela_432696973.jpg"), descricao: "A berinjela é um legume rico em vitaminas e sais minerais (cálcio, fósforo, ferro e fibras). É famosa por combater o colesterol, mas também previne diabetes e câncer, melhora o intestino e até ajuda a emagrecer.", lugares: exemplosDeLugares), EstruturaDosVegetais(nome: "Cebola Roxa", foto: UIImage(named: "cebola-roxa-768x307-b88dde90.jpg"), descricao: "Muito presente em diversos pratos, seja como tempero, ou como alimento principal, a cebola roxa é rica em vitamina A, B, B2, B3, C, ferro, cálcio, potássio, fósforo, magnésio, sódio e silício. Além de ser boa fonte de flavonóides, elemento com propriedades anti-inflamatória e anti-oxidante. ", lugares: exemplosDeLugares), EstruturaDosVegetais(nome: "Cenoura", foto: UIImage(named: "beneficios-da-cenoura_14186_l.jpg"), descricao: "A cenoura é uma raiz que é uma excelente fonte de carotenoides, potássio, fibras e antioxidantes, os quais proporcionam diversos benefícios para a saúde. Além de promover a saúde visual, também ajudam a evitar o envelhecimento precoce, melhorar o sistema imune e a prevenir alguns tipos de câncer.", lugares: exemplosDeLugares)]
         
         print (listaDeVegetais[2].lugaresDisponiveis[0].nomeDoEstabelecimento)
         
@@ -156,6 +156,9 @@ class MyViewController5: UIViewController{
         suavizadorDeFundo.alpha = 0.55
         pop_up.addSubview(suavizadorDeFundo)
         
+//        let minhaTableView = UITableView(frame: CGRect(x: 171, y: 460, width: 446, height: 404))
+//        minhaTableView.dataSource =
+        
         //preciso colocar isso?
         self.view = pop_up
         
@@ -169,7 +172,6 @@ class MyViewController5: UIViewController{
         imagemDoPopUp.image = imagem
         nomeDoPopUp.text = self.vegetalEspecífico.nomeDoVegetal
         descricaoDoVegetal.text = self.vegetalEspecífico.descricaoDovegetal
-        
         
     }
     
