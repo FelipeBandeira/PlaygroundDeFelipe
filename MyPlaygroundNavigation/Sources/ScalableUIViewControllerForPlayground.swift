@@ -1,4 +1,6 @@
 import UIKit
+import PlaygroundSupport
+
 public enum ScreenType {
     case iphone11ProMax
     case iphone11Pro
@@ -11,6 +13,7 @@ public enum ScreenType {
     case ipadPro12_9
     case mac
     case other(width: Int, height: Int)
+    
     public func size(isPortrait: Bool = true) -> CGSize {
         var size: CGSize
         switch self {
@@ -33,7 +36,7 @@ public enum ScreenType {
         case .ipadPro12_9:
             size = CGSize(width: 1024, height: 1366)
         case .mac:
-            return CGSize(width: 1440, height: 900)
+            size = CGSize(width: 1440, height: 900)
         case .other(let width, let height):
             size = CGSize(width: width, height: height)
         }
@@ -43,7 +46,9 @@ public enum ScreenType {
         return size
     }
 }
+
 extension UIViewController {
+    
     public convenience init(screenType: ScreenType, isPortrait: Bool = true) {
         self.init(nibName: nil, bundle: nil)
         let size = screenType.size(isPortrait: isPortrait)
@@ -51,42 +56,22 @@ extension UIViewController {
         view.clipsToBounds = true
         preferredContentSize = size
     }
-    public func scale(to scale: Float) -> UIView {
+    
+    public func scale(to scale: Float) -> UIWindow {
         if let self = self as? UINavigationController {
             guard let contentSize = self.topViewController?.view.frame.size else {
                 print("Erro: Seu Navigation Controller não possui um View Controller")
-                return UIView()
+                return UIWindow()
             }
             self.view.frame.size = contentSize == .zero ? view.frame.size : contentSize
         }
         self.view.transform = CGAffineTransform(scaleX: CGFloat(scale), y: CGFloat(scale))
         self.preferredContentSize = self.view.frame.size
-        let rootView = UIView(frame: CGRect(x: 0, y: 0, width: 768, height: 1024))
-        rootView.backgroundColor = .black
-        rootView.addSubview(self.view)
-        self.view.center = rootView.center
-        return rootView
-    }
-    public func scaleToFit(withKeyboard: Bool = false) -> UIView {
-        if let self = self as? UINavigationController {
-            guard let contentSize = self.topViewController?.view.frame.size else {
-                print("Erro: Seu Navigation Controller não possui um View Controller")
-                return UIView()
-            }
-            self.view.frame.size = contentSize == .zero ? view.frame.size : contentSize
-        }
-        let viewSize = self.view.frame.size
-        let maxRootViewSize = CGSize(width: 768, height: 1024)
-        let isViewPortrait = viewSize.height > viewSize.width
-        let scale = isViewPortrait ? (maxRootViewSize.height/viewSize.height) : (maxRootViewSize.width/viewSize.width)
-        self.view.transform = CGAffineTransform(scaleX: CGFloat(scale), y: CGFloat(scale))
-        let rootViewSize = CGSize(width: self.view.frame.width, height: withKeyboard ? 1024 : self.view.frame.height)
-        let rootView = UIView(frame: CGRect(x: 0, y: 0, width: rootViewSize.width, height: rootViewSize.height))
-        rootView.backgroundColor = .black
-        rootView.addSubview(self.view)
-        self.view.center.x = rootView.center.x
-        self.view.center.y = rootView.frame.minY + self.view.frame.height/2
-        self.preferredContentSize = rootView.frame.size
-        return rootView
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 770, height: 956))
+        window.backgroundColor = .black
+        window.addSubview(self.view)
+        self.view.center = window.center
+        window.makeKeyAndVisible()
+        return window
     }
 }

@@ -38,6 +38,8 @@ class MyViewController : UIViewController {
         view.backgroundColor = .white
         
         // 1) Crio uma variável para armazenar a label; 2) defino o tamanho da label; 3) defino seu texto; 4) defino a cor do texto. Depois 5) crio uma variável para receber minha fonte customizada; 6) abro a configuração de fonte da label e 7) faço ela receber minha variável que carrega a fonte customizada
+        
+        
         let appName = UILabel()
         appName.frame = CGRect(x: 42, y: 42, width: 361, height: 68)
         appName.text = "Banco alimentar"
@@ -404,4 +406,4 @@ class MyViewController4: UIViewController{
 
 let mnc = UINavigationController(screenType: .ipadPro12_9, isPortrait: false)
 mnc.pushViewController(MyViewController(), animated: true)
-PlaygroundPage.current.liveView = mnc.scale(to: 0.3)
+PlaygroundPage.current.liveView = mnc.scaleToFit()

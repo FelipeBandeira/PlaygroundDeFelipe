@@ -107,7 +107,7 @@ class MyViewController4 : UIViewController, UICollectionViewDelegate, UICollecti
         let mvc5 = MyViewController5(screenType: .other(width: 1148, height: 737))
         mvc5.vegetalEspecífico = listaDeVegetais[indexPath.item]
         present(mvc5, animated: true, completion: nil)
-    
+        
     }
     
 }
@@ -150,17 +150,18 @@ class MyViewController5: UIViewController{
         descricaoDoVegetal.font = UIFont(name: "PT Sans", size: 35)
         pop_up.addSubview(descricaoDoVegetal)
         
+        
+        
         let suavizadorDeFundo = UIView()
         suavizadorDeFundo.frame = CGRect(x: 0, y: 130.47, width: 537.96, height: 606.08)
         suavizadorDeFundo.backgroundColor = .black
         suavizadorDeFundo.alpha = 0.55
         pop_up.addSubview(suavizadorDeFundo)
         
-//        let minhaTableView = UITableView(frame: CGRect(x: 171, y: 460, width: 446, height: 404))
-//        minhaTableView.dataSource =
-        
-        //preciso colocar isso?
-        self.view = pop_up
+       // let minhaTableView = UITableView(frame: CGRect(x: 171, y: 460, width: 446, height: 404))
+            
+            //preciso colocar isso?
+            self.view = pop_up
         
         
     }
