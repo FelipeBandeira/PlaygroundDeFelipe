@@ -5,6 +5,36 @@ import Foundation
 import UIKit
 import PlaygroundSupport
 
+class CelulaDeLugar: UITableViewCell{
+    
+    let retanguloDeFundo = UILabel(frame: CGRect(x: 0, y: 0, width: 445.75, height: 114.96))
+    let nomeDoLugar = UILabel(frame: CGRect(x: 15, y: 5, width: 277, height: 47))
+    let distancia = UILabel(frame: CGRect(x: 357.11, y: 5, width: 83.93, height: 29.38))
+    let textoDeRetirada = UILabel(frame: CGRect(x: 15, y: 64.07, width: 347.07, height: 43.43))
+    
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        retanguloDeFundo.backgroundColor = .white
+        nomeDoLugar.font = UIFont(name: "PTSans-Bold", size: 40)
+        distancia.font = UIFont(name: "PTSans-Italic", size: 25)
+        textoDeRetirada.font = UIFont(name: "PTSans-Italic", size: 25)
+        
+        
+        //por que isso?
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.addSubview(retanguloDeFundo)
+        self.addSubview(nomeDoLugar)
+        self.addSubview(distancia)
+        self.addSubview(textoDeRetirada)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+
 class Lugar{
     let nomeDoEstabelecimento: String
     let horaDeRetirada: String
@@ -26,22 +56,29 @@ class MyViewController2 : UIViewController, UITableViewDelegate, UITableViewData
         let view = UIView()
         view.backgroundColor = .white
         
+        
+        table.dataSource = self
+        table.delegate = self
+        table.isScrollEnabled = true
+        table.register(CelulaDeLugar.self, forCellReuseIdentifier: "id")
+        view.addSubview(table)
+        
     }
     
     let table = UITableView(frame: CGRect(x: 10, y: 20, width: 100, height: 100))
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exemplosDeLugares.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celula: UITableViewCell = self.table.dequeueReusableCell(withIdentifier: "celula") ?? UITableViewCell()
-        celula.textLabel?.text = exemplosDeLugares[indexPath.item].nomeDoEstabelecimento
+        let celula: CelulaDeLugar = self.table.dequeueReusableCell(withIdentifier: "id") as! CelulaDeLugar
+        celula.nomeDoLugar.text = exemplosDeLugares[indexPath.item].nomeDoEstabelecimento
+        celula.distancia.text = exemplosDeLugares[indexPath.item].distancia
+        celula.textoDeRetirada.text = "Retirada até \(exemplosDeLugares[indexPath.item].horaDeRetirada)"
+        
         return celula
     }
-    
-    
     
     
    

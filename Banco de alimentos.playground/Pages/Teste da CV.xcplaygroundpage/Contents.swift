@@ -10,7 +10,7 @@ class CelulaDosVegetais: UICollectionViewCell{
     public let ilustracao: UIImageView  = UIImageView(frame: CGRect(x: 0, y: 0, width: 337.7, height: 91.67))
     public let titulo: UILabel = UILabel(frame: CGRect(x: 59.5, y: 19, width: 214.61, height: 55.43))
     
-    // 3) Não entendi esse init. Por que override? Por que super? Onde estão os parâmetros do init?
+    
     public override init(frame: CGRect){
         super.init(frame:frame)
         self.backgroundView = ilustracao
