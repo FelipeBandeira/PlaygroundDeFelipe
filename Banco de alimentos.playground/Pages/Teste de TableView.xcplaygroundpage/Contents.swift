@@ -72,10 +72,12 @@ class MyViewController2 : UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celula: CelulaDeLugar = self.table.dequeueReusableCell(withIdentifier: "id") as! CelulaDeLugar
+        let celula: CelulaDeLugar = self.table.dequeueReusableCell(withIdentifier: "id", for: indexPath) as! CelulaDeLugar
         celula.nomeDoLugar.text = exemplosDeLugares[indexPath.item].nomeDoEstabelecimento
         celula.distancia.text = exemplosDeLugares[indexPath.item].distancia
         celula.textoDeRetirada.text = "Retirada até \(exemplosDeLugares[indexPath.item].horaDeRetirada)"
+        
+        
         
         return celula
     }
